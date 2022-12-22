@@ -1,0 +1,17 @@
+.contained{
+    background-color: var(--blue);
+}
+.outlined{
+    background-color: transparent;
+}
+.contained:hover{
+    box-shadow: 3px 3px 10px var(--blue);
+}
+button{
+    color: var(--white);
+    border: none;
+    width: min-content;
+    padding: 7px 13px;
+    border-radius: 25px;
+    cursor: pointer;
+}
