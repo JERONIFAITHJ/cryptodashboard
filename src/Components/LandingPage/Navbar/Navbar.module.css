@@ -13,6 +13,13 @@
     box-sizing: border-box;
     z-index: 10000;
 }
+.navbar a{
+    text-decoration: none !important;
+    color: var(--grey) !important;
+}
+.navbar a:hover{
+    color: var(--white) !important;
+}
 .navbar > div{
     display: flex;
     justify-content: center;

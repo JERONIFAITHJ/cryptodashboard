@@ -1,0 +1,14 @@
+.lineChart {
+  width: 90%;
+  margin: auto;
+  margin-top: 2rem;
+  background-color: var(--gray);
+  padding: 3rem;
+  border-radius: 30px;
+}
+.dateChange{
+    display: flex;
+    gap: 2rem;
+    align-items: center;
+    flex-basis: 40%;
+}

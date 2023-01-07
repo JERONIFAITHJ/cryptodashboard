@@ -1,0 +1,24 @@
+.compare{
+    width: 90%;
+    margin: auto;
+    margin-top: 2rem;
+}
+@media only screen and (max-width: 800px){
+    .compare{
+        margin-left: 0 !important;
+        margin-top: 0 !important;
+        padding: 1rem;
+    }
+}
+.dataFeed{
+    display: flex;
+    gap: 2rem;
+    align-items: center;
+}
+.dataFeed div{
+    display: flex;
+    min-width: 20%;
+    gap: 1rem;
+    justify-content: center;
+    align-items: center;
+}

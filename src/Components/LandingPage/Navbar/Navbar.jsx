@@ -9,6 +9,8 @@ import { Button } from "@mui/material";
 import CustomButton from "../../Common/CustomButton/CustomButton";
 import { Box } from "@mui/system";
 import MenuRoundedIcon from "@mui/icons-material/MenuRounded";
+import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const MaterialUISwitch = styled(Switch)(({ theme }) => ({
   width: 62,
@@ -58,10 +60,16 @@ const MaterialUISwitch = styled(Switch)(({ theme }) => ({
 }));
 
 export default function Navbar() {
+  const navigate = useNavigate();
   const [drawerStatus, setDrawerStatus] = useState(false);
   const toggleDrawer = () => {
     setDrawerStatus((prevState) => !prevState);
   };
+  const lists = [
+    { head: "Home", link: "/" },
+    { head: "Compare", link: "/compare" },
+    { head: "Watchlist", link: "/watchlist" },
+  ];
   return (
     <Fragment>
       <div className={classes.navbar}>
@@ -69,13 +77,17 @@ export default function Navbar() {
           CryptoTracker<span style={{ color: "var(--blue)" }}>.</span>
         </h1>
         <div>
-          <MaterialUISwitch sx={{marginRight: '2rem'}} />
+          <MaterialUISwitch sx={{ marginRight: "2rem" }} />
           <ul>
-            <li>Home</li>
-            <li>Compare</li>
-            <li>Watchlist</li>
+            {lists.map((val, i) => <li key={i}><Link to={val.link}>{val.head}</Link></li>)}
             <li>
-              <CustomButton btnType="contained" btnName="Dashboard" />
+              <CustomButton
+                btnType="contained"
+                btnName="Dashboard"
+                onClick={() => {
+                  navigate("/dashboard");
+                }}
+              />
             </li>
           </ul>
         </div>
@@ -85,11 +97,12 @@ export default function Navbar() {
           CryptoTracker<span style={{ color: "var(--blue)" }}>.</span>
         </h1>
         <Button onClick={toggleDrawer}>
-          <MenuRoundedIcon sx={{ color: 'var(--white)', fontSize: '2rem' }} />
+          <MenuRoundedIcon sx={{ color: "var(--white)", fontSize: "2rem" }} />
         </Button>
         <Drawer
           className={classes.drawer}
           anchor="right"
+          sx={{ zIndex: "10000" }}
           PaperProps={{
             sx: {
               backgroundColor: "var(--black)",

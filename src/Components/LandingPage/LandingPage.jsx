@@ -5,7 +5,6 @@ import Navbar from './Navbar/Navbar'
 export default function LandingPage() {
   return (
     <Fragment>
-      <Navbar />
       <MainContent />
     </Fragment>
   )

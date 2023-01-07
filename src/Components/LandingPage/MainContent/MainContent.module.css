@@ -25,6 +25,7 @@
 }
 @media only screen and (max-width: 800px) {
     .maincontent{
+        gap: 5rem;
         flex-direction: column;
         text-align: center;
     }
@@ -54,4 +55,28 @@
     height: auto;
     right: 10rem;
     top: 8rem;
+}
+@media only screen and (max-width: 800px) {
+    .imgContainer{
+        min-height: 50vh;
+        margin-left: auto;
+        margin-right: auto;
+        margin-left: auto !important;
+        margin-right: auto !important;
+        /* position: unset; */
+    }
+    .imgContainer #gradient{
+        margin-left: auto !important;
+        margin-right: auto !important;
+        right : 3rem;
+        top: 6rem;
+    }
+    .imgContainer #floater{
+        width: 50%;
+        top: 0rem;
+        right: 2rem;
+        margin-left: auto !important;
+        margin-right: auto !important;
+        /* right: 6rem; */
+    }
 }
