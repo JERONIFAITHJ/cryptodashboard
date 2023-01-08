@@ -2,13 +2,19 @@ import React, { useReducer } from 'react'
 
 
 const initialState = {
-    coins: []
+    coins: false
 };
 
 export const CoinStore = React.createContext();
 
 const reducer = (state, action) => {
-    return state.coins = action.payload;
+    switch (action.type) {
+        case 'render':
+            return state.coins = true;
+        case 'dont_render':
+            return state.coins = false;
+        default: return state.coins
+    }
 }
 
 export default function Store(props) {

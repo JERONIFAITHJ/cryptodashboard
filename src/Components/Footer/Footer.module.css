@@ -1,0 +1,37 @@
+.footer {
+    background: linear-gradient(-45deg, var(--blue), #3ca0e7, #0dbfff, #23d5ab);
+    background-size: 400% 400%;
+    animation: gradient 15s ease infinite;
+    /* min-height: 20vh; */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 2rem;
+    box-sizing: border-box;
+    width: 95%;
+    margin: auto;
+    margin-top: 2vh;
+    margin-bottom: 2vh;
+    border-radius: 10px;
+}
+.footer div{
+    display: flex;
+    gap: 1rem;
+}
+.footer a{
+    text-decoration: none !important;
+}
+.footer a:visited{
+    text-decoration: none;
+}
+@keyframes gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}

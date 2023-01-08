@@ -21,6 +21,7 @@ const styles = {
 };
 
 export default function Compare() {
+
   const [coin1, setCoin1] = useState([]);
   const [coin1Selected, setCoin1Selected] = useState("bitcoin");
 

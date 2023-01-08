@@ -58,7 +58,7 @@
 }
 @media only screen and (max-width: 800px) {
     .imgContainer{
-        min-height: 50vh;
+        min-height: 70vh;
         margin-left: auto;
         margin-right: auto;
         margin-left: auto !important;
@@ -68,13 +68,13 @@
     .imgContainer #gradient{
         margin-left: auto !important;
         margin-right: auto !important;
-        right : 3rem;
+        left : 28%;
         top: 6rem;
     }
     .imgContainer #floater{
         width: 50%;
         top: 0rem;
-        right: 2rem;
+        left: 20%;
         margin-left: auto !important;
         margin-right: auto !important;
         /* right: 6rem; */

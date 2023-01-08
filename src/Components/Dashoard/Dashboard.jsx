@@ -8,16 +8,14 @@ import GridView from "./GridView/GridView";
 import ListView from "./ListView/ListView";
 import PaginationComponent from "./Pagination/Pagination";
 import SearchRoundedIcon from "@mui/icons-material/SearchRounded";
-import { useContext } from "react";
-import { CoinStore } from "../../Store/Store";
+import ErrorDisplay from "../Common/ErrorDisplay/ErrorDisplay";
 
 export default function Dashboard({ watchlist = false }) {
   const [value, setValue] = useState("1");
+  const [isLoading, setIsLoading] = useState(true);
   const [coinData, setCoinData] = useState([]);
   const [searchData, setSearchData] = useState("");
   const [searchValues, setSearchValues] = useState([]);
-
-  const [coins, setCoins] = useContext(CoinStore);
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
@@ -25,20 +23,22 @@ export default function Dashboard({ watchlist = false }) {
 
   const getData = async () => {
     try {
+      setIsLoading(true);
       const response = await fetch(
         "https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=100&page=1&sparkline=false"
       );
       if (!response.ok) throw new Error("Something went wrong!");
       const data = await response.json();
-      if(watchlist.watch){
-        const d = data.filter(val => watchlist.localData.includes(val.id));
+      if (watchlist.watch) {
+        const d = data.filter((val) => watchlist.localData.includes(val.id));
         console.log(d);
         setCoinData(d);
         return;
       }
       setCoinData(data);
-      setCoins({payload: data});
+      setIsLoading(false);
     } catch (err) {
+      setIsLoading(false);
       console.log(err);
     }
   };
@@ -48,6 +48,7 @@ export default function Dashboard({ watchlist = false }) {
   }, []);
 
   const searchDataHandler = (e) => {
+    setIsLoading(true);
     setSearchData(e.target.value);
     const newData = coinData.filter(
       (val) =>
@@ -55,7 +56,7 @@ export default function Dashboard({ watchlist = false }) {
         val.symbol.toLowerCase().includes(e.target.value.toLowerCase().trim())
     );
     setSearchValues(newData);
-    console.log(searchValues.length);
+    setIsLoading(false);
   };
 
   return (
@@ -98,8 +99,10 @@ export default function Dashboard({ watchlist = false }) {
               totalPages={Math.ceil(coinData.length / 10)}
               coinData={coinData}
             />
+          ) : searchValues.length === 0 && !isLoading ? (
+            <ErrorDisplay isError={true} />
           ) : (
-            <p>Loading...</p>
+            <ErrorDisplay isError={false} />
           )}
         </TabContext>
       </Box>

@@ -67,7 +67,7 @@ export default function LineChart({ coinData }) {
     labels: xAxis,
     datasets: [
       {
-        label: "Bitcoin",
+        label: coinData.name,
         data: yAxis,
         fill: false,
         borderColor: "rgb(75, 192, 192)",

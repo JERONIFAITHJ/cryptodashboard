@@ -4,8 +4,14 @@ import classes from "./MainContent.module.css";
 import gradient from "../../../Assets/gradient.png";
 import floaterImg from "../../../Assets/floaterImg.png";
 import { motion } from "framer-motion";
+import { useNavigate } from "react-router-dom";
+import { RWebShare } from "react-web-share";
 
 export default function MainContent() {
+  const navigate = useNavigate();
+  const DashboardHandler = () => {
+    navigate("/dashboard");
+  };
   return (
     <div className={classes.maincontent}>
       <div className={classes.textContainer}>
@@ -60,8 +66,18 @@ export default function MainContent() {
             styles={{ marginRight: "2rem" }}
             btnName="Dashboard"
             btnType="contained"
+            onClick={DashboardHandler}
           />
-          <CustomButton btnName="Share" btnType="outlined" />
+          <RWebShare
+            data={{
+              text: "Cryptodashboard made by Jeroni",
+              url: "https://cryptodashboard-zeta.vercel.app/",
+              title: "Cryptodashboard",
+            }}
+            onClick={() => console.log("shared successfully!")}
+          >
+            <CustomButton btnName="Share" btnType="outlined" />
+          </RWebShare>
         </motion.div>
       </div>
       <div className={classes.imgContainer}>

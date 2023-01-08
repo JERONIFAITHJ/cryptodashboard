@@ -1,0 +1,12 @@
+.error{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    font-size: 2rem;
+    margin: auto;
+}
+.error p{
+    margin-top: 3rem;
+}

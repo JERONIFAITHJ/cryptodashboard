@@ -1,4 +1,4 @@
-import React, { Fragment } from "react";
+import React, { Fragment, useState } from "react";
 import classes from "./ListView.module.css";
 import TrendingDownRoundedIcon from "@mui/icons-material/TrendingDownRounded";
 import TrendingUpRoundedIcon from "@mui/icons-material/TrendingUpRounded";
@@ -6,10 +6,12 @@ import { motion } from "framer-motion";
 import NumbersFunc from "../../../Functions/NumbersFunc";
 import { isMobile } from "react-device-detect";
 import BookmarkIcon from "@mui/icons-material/Bookmark";
+import BookmarkBorderRoundedIcon from '@mui/icons-material/BookmarkBorderRounded';
 import { useNavigate } from "react-router-dom";
 import bookmark from "../../../Functions/Bookmark";
 
 export default function ListView({ coinData }) {
+  const [isPresent, setIsPresent] = useState(JSON.parse(localStorage.getItem('userInfo')) || []);
   const navigate = useNavigate();
   const navigateToCoinPage = (to) => {
     navigate(`/coin/${to}`);
